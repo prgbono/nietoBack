@@ -8,8 +8,12 @@ include 'inc/conexion.php';
 // Obtener los datos que nos envía jquery 
 extract($_REQUEST); //A partir de esta línea tenemos disponibles unas variables que se llaman igual que el atributo name de los inputs del formulario. 
 
+$id_cliente = $_REQUEST['id_cliente'];
 
-echo ($_REQUEST['descripcion'][0] + $_REQUEST['check'][1] + $_REQUEST['precio'][2]+ $_REQUEST['pvp'][3] + $_REQUEST['dto'][4] + $_REQUEST['total'][5] + $_REQUEST['uds'][6]);
+
+//$query= "INSERT INTO pruebas_presupuestos (fecha, asunto, id_coche, id_cliente, total, transporte, canarias, subtotal, iva) VALUES ('$fecha_newPpto', '$asunto_newPpto', 'SELECT id_coche ppal del cliente pasado', 'SELECT id_cliente', calc(total), '$transporte_newPpto', '$canarias_newPpto', calc(subtotal), iva)";
+
+echo $id_cliente;
 
 
 

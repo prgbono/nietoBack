@@ -19,7 +19,12 @@ if($cliente!=0){
     $sql="select * from pruebas_presupuestos WHERE id_cliente = '$cliente' ORDER BY fecha";
 }
 else{
-    $sql = "SELECT * FROM pruebas_presupuestos WHERE (id_ppto LIKE '$keyword' or fecha LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword' or total LIKE '$keyword') ORDER BY fecha";
+	if (is_null($keyword)){
+		$sql = "SELECT * FROM pruebas_presupuestos";	
+	}
+	else{
+		$sql = "SELECT * FROM pruebas_presupuestos WHERE (id_ppto LIKE '$keyword' or fecha LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword' or total LIKE '$keyword') ORDER BY fecha";	
+	}   
 }
 
 //ejecutamos

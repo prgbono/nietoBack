@@ -15,15 +15,21 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : 0;
 if(is_null($keyword)){
     $sql="select * from pruebas_presupuestos ORDER BY fecha";
 }*/
+
+$sqlBase = "SELECT pruebas_presupuestos.id_ppto, pruebas_presupuestos.fecha, pruebas_coches.modelo as coche, pruebas_clientes.nombre as cliente, pruebas_presupuestos.total, pruebas_presupuestos.transporte, pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM pruebas_presupuestos INNER JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente INNER JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche "
+
 if($cliente!=0){
-    $sql="select * from pruebas_presupuestos WHERE id_cliente = '$cliente' ORDER BY fecha";
+    /*$sql="SELECT * FROM pruebas_presupuestos WHERE id_cliente = '$cliente' ORDER BY fecha";*/
+    $sql=$sqlBase . "WHERE pruebas_presupuestos.id_cliente = '$cliente' ORDER BY fecha";
 }
 else{
 	if (is_null($keyword)){
-		$sql = "SELECT * FROM pruebas_presupuestos";	
+		/*$sql = "SELECT * FROM pruebas_presupuestos";	*/
+		$sql = $sqlBase;
 	}
 	else{
-		$sql = "SELECT * FROM pruebas_presupuestos WHERE (id_ppto LIKE '$keyword' or fecha LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword' or total LIKE '$keyword') ORDER BY fecha";	
+		/*$sql = "SELECT * FROM pruebas_presupuestos WHERE (id_ppto LIKE '$keyword' or fecha LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword' or total LIKE '$keyword') ORDER BY fecha";	*/
+		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' or pruebas_presupuestos.total LIKE '$keyword') ORDER BY fecha";	
 	}   
 }
 
@@ -40,7 +46,7 @@ while($fila = mysqli_fetch_assoc($result)){
 
     //Falta el close connection mysqli_close(mysqli_connect($host, $user, $password, $database)) or die("Error en la DCX");
 
-//echo $cliente;
+echo $sql;
 echo '{"Presupuestos":'.json_encode($output).'}';
 
 

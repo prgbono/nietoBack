@@ -11,12 +11,10 @@ $keyword = isset($_REQUEST['keyword']) ? '%'.$_REQUEST['keyword'].'%' : NULL;
 //Si no viene cliente que sea 0 y por ese 0 filtramos la consulta
 $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : 0;
 
-/*Esta parte sobra, no entra en este caso nunca
-if(is_null($keyword)){
-    $sql="select * from pruebas_presupuestos ORDER BY fecha";
-}*/
+$sqlBase = "SELECT pruebas_presupuestos.id_ppto, pruebas_presupuestos.fecha, pruebas_coches.modelo as id_coche, 
+	pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
+	pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM (pruebas_presupuestos LEFT JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche ";
 
-$sqlBase = "SELECT pruebas_presupuestos.id_ppto, pruebas_presupuestos.fecha, pruebas_coches.modelo as coche, pruebas_clientes.nombre as cliente, pruebas_presupuestos.total, pruebas_presupuestos.transporte, pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM pruebas_presupuestos INNER JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente INNER JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche "
 
 if($cliente!=0){
     /*$sql="SELECT * FROM pruebas_presupuestos WHERE id_cliente = '$cliente' ORDER BY fecha";*/
@@ -46,7 +44,6 @@ while($fila = mysqli_fetch_assoc($result)){
 
     //Falta el close connection mysqli_close(mysqli_connect($host, $user, $password, $database)) or die("Error en la DCX");
 
-echo $sql;
 echo '{"Presupuestos":'.json_encode($output).'}';
 
 

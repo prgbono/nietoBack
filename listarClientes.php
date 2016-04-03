@@ -9,7 +9,7 @@ include 'inc/conexion.php';
         
 //sql
 /*$sql="select * from pruebas_clientes ORDER BY nombre";*/
-$sql="SELECT pruebas_clientes.id_cliente, pruebas_clientes.nombre, pruebas_coches.modelo as coche, pruebas_clientes.variado, pruebas_clientes.tlf1, pruebas_clientes.tlf2, pruebas_clientes.email, pruebas_clientes.email2, pruebas_clientes.ciudad FROM pruebas_clientes INNER JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente";
+$sql="SELECT pruebas_clientes.id_cliente, pruebas_clientes.nombre, pruebas_coches.modelo as coche, pruebas_clientes.variado, pruebas_clientes.tlf1, pruebas_clientes.tlf2, pruebas_clientes.email, pruebas_clientes.email2, pruebas_clientes.ciudad FROM pruebas_clientes LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente ORDER BY pruebas_clientes.nombre";
 
 //ejecutamos
 $result = mysqli_query($link, $sql);

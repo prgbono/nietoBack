@@ -10,35 +10,44 @@ $keyword = isset($_REQUEST['keyword']) ? '%'.$_REQUEST['keyword'].'%' : NULL;
 //Si no viene cliente que sea 0 y por ese 0 filtramos la consulta
 $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : 0;
 
+$sql_tri1="SELECT pruebas_pedidos.id_pedido, pruebas_pedidos.fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_pedidos.total, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) BETWEEN '".date("Y")."-01-01 00:00:00' AND '".date("Y")."-03-31 23:59:59' ";
 
-if($cliente!=0){
-    $sql_tri1="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-01-01 00:00:00' AND '".date("Y")."-03-31 23:59:59' AND id_cliente = '$cliente'";
-    $sql_tri2="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-04-01 00:00:00' AND '".date("Y")."-06-30 23:59:59' AND id_cliente = '$cliente'";
-    $sql_tri3="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-07-01 00:00:00' AND '".date("Y")."-09-30 23:59:59' AND id_cliente = '$cliente'";
-    $sql_tri4="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-10-01 00:00:00' AND '".date("Y")."-12-31 23:59:59' AND id_cliente = '$cliente'";
-    $sql_PedTotal="select * from pruebas_pedidos where date(fecha) not between '".date("Y")."-01-01' AND '".date("Y")."-12-31' AND id_cliente = '$cliente'";
+$sql_tri2="SELECT pruebas_pedidos.id_pedido, pruebas_pedidos.fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_pedidos.total, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) BETWEEN '".date("Y")."-04-01 00:00:00' AND '".date("Y")."-06-30 23:59:59' ";
+
+$sql_tri3="SELECT pruebas_pedidos.id_pedido, pruebas_pedidos.fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_pedidos.total, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) BETWEEN '".date("Y")."-07-01 00:00:00' AND '".date("Y")."-09-30 23:59:59' ";
+
+ $sql_tri4="SELECT pruebas_pedidos.id_pedido, pruebas_pedidos.fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_pedidos.total, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) BETWEEN '".date("Y")."-10-01 00:00:00' AND '".date("Y")."-12-31 23:59:59' ";
+
+ $sql_PedTotal="SELECT pruebas_pedidos.id_pedido, pruebas_pedidos.fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_pedidos.total, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) not BETWEEN '".date("Y")."-01-01 00:00:00' AND '".date("Y")."-12-31 23:59:59' ";
+
+//AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";
+
+if($cliente!=0){    
+
+    $sql_tri1= $sql_tri1."AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";
+    $sql_tri2= $sql_tri2."AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";
+    $sql_tri3= $sql_tri3."AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";
+    $sql_tri4= $sql_tri4."AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";
+    $sql_PedTotal= $sql_PedTotal."AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";    
+
 }
-
 else{
     if(is_null($keyword)){
     //sql's de los 4 trimestres del año en curso y del resto de pedidos de otros años
-        $sql_tri1="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-01-01 00:00:00' AND '".date("Y")."-03-31 23:59:59'";
-        $sql_tri2="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-04-01 00:00:00' AND '".date("Y")."-06-30 23:59:59'";
-        $sql_tri3="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-07-01 00:00:00' AND '".date("Y")."-09-30 23:59:59'";
-        $sql_tri4="select * from pruebas_pedidos where date(fecha) between '".date("Y")."-10-01 00:00:00' AND '".date("Y")."-12-31 23:59:59'";
-        $sql_PedTotal="select * from pruebas_pedidos where date(fecha) not between '".date("Y")."-01-01' AND '".date("Y")."-12-31'";
+        $sql_tri1 = $sql_tri1."ORDER BY pruebas_pedidos.fecha";
+        $sql_tri2 = $sql_tri2."ORDER BY pruebas_pedidos.fecha";
+        $sql_tri3 = $sql_tri3."ORDER BY pruebas_pedidos.fecha";
+        $sql_tri4 = $sql_tri4."ORDER BY pruebas_pedidos.fecha";
+        $sql_PedTotal = $sql_PedTotal."ORDER BY pruebas_pedidos.fecha";
     }
     else
     {
-        $sql_tri1="select * from pruebas_pedidos where (date(fecha) between '".date("Y")."-01-01 00:00:00' AND '".date("Y")."-03-31 23:59:59') AND (id_pedido LIKE '$keyword' or fecha LIKE '$keyword' or id_fra LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword')";
-        
-        $sql_tri2="select * from pruebas_pedidos where (date(fecha) between '".date("Y")."-04-01 00:00:00' AND '".date("Y")."-06-30 23:59:59') AND (id_pedido LIKE '$keyword' or fecha LIKE '$keyword' or id_fra LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword')";
-        
-        $sql_tri3="select * from pruebas_pedidos where (date(fecha) between '".date("Y")."-07-01 00:00:00' AND '".date("Y")."-09-30 23:59:59') AND (id_pedido LIKE '$keyword' or fecha LIKE '$keyword' or id_fra LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword')";
-        
-        $sql_tri4="select * from pruebas_pedidos where (date(fecha) between '".date("Y")."-10-01 00:00:00' AND '".date("Y")."-12-31 23:59:59') AND (id_pedido LIKE '$keyword' or fecha LIKE '$keyword' or id_fra LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword')";
-        
-        $sql_PedTotal="select * from pruebas_pedidos where (date(fecha) not between '".date("Y")."-01-01' AND '".date("Y")."-12-31') AND (id_pedido LIKE '$keyword' or fecha LIKE '$keyword' or id_fra LIKE '$keyword' or id_coche LIKE '$keyword' or id_cliente LIKE '$keyword')";
+        //ESTE ELSE NO RULA! Hay que buscar en el resultado de la consulta de las vbles de trimestres, no de las tablas estáticas
+        $sql_tri1 = $sql_tri1."AND (pruebas_pedidos.id_pedido LIKE '$keyword' or pruebas_pedidos.fecha LIKE '$keyword' or pruebas_pedidos.id_fra LIKE '$keyword' or pruebas_coches.modelo LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword')";
+        $sql_tri2 = $sql_tri2."AND (pruebas_pedidos.id_pedido LIKE '$keyword' or pruebas_pedidos.fecha LIKE '$keyword' or pruebas_pedidos.id_fra LIKE '$keyword' or pruebas_coches.modelo LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword')";
+        $sql_tri3 = $sql_tri3."AND (pruebas_pedidos.id_pedido LIKE '$keyword' or pruebas_pedidos.fecha LIKE '$keyword' or pruebas_pedidos.id_fra LIKE '$keyword' or pruebas_coches.modelo LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword')";
+        $sql_tri4 = $sql_tri4."AND (pruebas_pedidos.id_pedido LIKE '$keyword' or pruebas_pedidos.fecha LIKE '$keyword' or pruebas_pedidos.id_fra LIKE '$keyword' or pruebas_coches.modelo LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword')";
+        $sql_PedTotal = $sql_PedTotal. "AND (pruebas_pedidos.id_pedido LIKE '$keyword' or pruebas_pedidos.fecha LIKE '$keyword' or pruebas_pedidos.id_fra LIKE '$keyword' or pruebas_coches.modelo LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword')";
     }
 }
 

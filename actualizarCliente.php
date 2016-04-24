@@ -4,20 +4,21 @@ header('Access-Control-Allow-Origin: *');
 //1.Incluir el fichero de conexión para conectar con la BBDD
 include 'inc/conexion.php';
 
-//2. Obtener los datos que nos envía jquery 
-extract(utf8_decode($_REQUEST)); //A partir de esta línea tenemos disponibles unas variables que se llaman igual que el atributo name de los inputs del formulario. 
+extract($_REQUEST);
+//extract(utf8_decode($_REQUEST)); //A partir de esta línea tenemos disponibles unas variables que se llaman igual que el atributo name de los inputs del formulario. 
 
 $id_cliente = isset($_REQUEST['id_cliente']) ? $_REQUEST['id_cliente'] : NULL; 
-$id_coches = isset($_REQUEST['id_coches']) ? $_REQUEST['id_coches'] : NULL; 
 $id_direcciones = isset($_REQUEST['id_direcciones']) ? $_REQUEST['id_direcciones'] : NULL;
-$coches_array = isset($_REQUEST['$coches_array']) ? $_REQUEST['$coches_array'] : NULL;
+//$id_coches = isset($_REQUEST['id_coches']) ? $_REQUEST['id_coches'] : NULL; 
+//$coches_array = isset($_REQUEST['$coches_array']) ? $_REQUEST['$coches_array'] : NULL;
 
 //UTF-8 -- TRAERLO Y DECODIFICARLO EN UN ARRAY PQ NO SÉ LAS VARIABLES QUE VA A TRAER!!!
 $nombre = (trim($nombre));
 $variado = (trim($variado));
-$tlf0 = (trim($tlf0)); //Cambiar noombre de campo de los tlf's
+$tlf1 = (trim($tlf1)); //Cambiar noombre de campo de los tlf's
 $email1 = (trim($email1));
-$ciudad = (trim($ciudad));
+$email2 = (trim($email2));
+$envio_nombre = (trim($ciudad));
 $ppal = (trim($ppal));
 $envio_nombre = (trim($envio_nombre));
 $envio_calle = (trim($envio_calle));
@@ -30,7 +31,7 @@ $factNIF = (trim($factNIF));
 $fact_ciudad = (trim($fact_ciudad));
 
 //Puede estar el problema en definir arrays en PHP como receptores de los datos enviados
-echo $coches_array;
+echo $nombre, $variado, $tlf1, $tlf2, $email1, $email2, $envio_nombre, $envio_calle;
 
 
 /*REcorrer el array de id_coches

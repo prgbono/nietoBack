@@ -10,14 +10,15 @@ include 'inc/conexion.php';
 extract($_REQUEST); //A partir de esta línea tenemos disponibles unas variables que se llaman igual que el atributo name de los inputs del formulario. 
 
 //UTF-8 -- TRAERLO Y DECODIFICARLO EN UN ARRAY PQ NO SÉ LAS VARIABLES QUE VA A TRAER!!!
-$nombre = utf8_decode(trim($nombre));
+$nombre = utf8_decode(trim($input_nombre));
 $coche0 = utf8_decode(trim($coche0));
 $coche1 = utf8_decode(trim($coche1));
 $coche2 = utf8_decode(trim($coche2));
-$variado = utf8_decode(trim($variado));
-$tlf0 = utf8_decode(trim($tlf0));
-$email1 = utf8_decode(trim($email1));
-$ciudad = utf8_decode(trim($ciudad));
+$variado = utf8_decode(trim($input_variado));
+$tlf1 = trim($input_tlf1);
+$tlf2 = trim($input_tlf2);
+$email1 = utf8_decode(trim($input_email1));
+$email2 = utf8_decode(trim($input_email2));
 $ppal = utf8_decode(trim($ppal));
 $bas0 = utf8_decode(trim($bas0));
 $bas1 = utf8_decode(trim($bas1));
@@ -25,11 +26,11 @@ $bas2 = utf8_decode(trim($bas2));
 $anio0 = utf8_decode(trim($anio0));
 $anio1 = utf8_decode(trim($anio1));
 $anio2 = utf8_decode(trim($anio2));
-$envio_nombre = utf8_decode(trim($envio_nombre));
+/*$envio_nombre = utf8_decode(trim($envio_nombre));*/
 $envio_calle = utf8_decode(trim($envio_calle));
 $envioCP = utf8_decode(trim($envioCP));
 $envio_ciudad = utf8_decode(trim($envio_ciudad));
-$fact_nombre = utf8_decode(trim($fact_nombre));
+/*$fact_nombre = utf8_decode(trim($fact_nombre));*/
 $fact_calle = utf8_decode(trim($fact_calle));
 $factCP = utf8_decode(trim($factCP));
 $factNIF = utf8_decode(trim($factNIF));
@@ -51,9 +52,9 @@ else {
         echo -2;
     }
     else{
-        //Inserción en tablas clientes y coches
-        $query= "INSERT INTO pruebas_clientes (nombre, coche, variado, tlf1, email, ciudad) VALUES ('$nombre', '0', '$variado', '$tlf0', '$email1', '$ciudad')";
-        //$result = mysqli_query($link, $query);
+        //Inserción en tablas clientes, coches y direcciones
+        $query= "INSERT INTO pruebas_clientes (nombre, coche, variado, tlf1, tlf2, email, email2) VALUES ('$nombre', '0', '$variado', '$tlf1', '$tlf2', '$email1','$email2')";
+        /*$result = mysqli_query($link, $query);*/
         mysqli_query($link, $query);
 
         //Último id de cliente generado
@@ -62,7 +63,7 @@ else {
         $max_cli = $Cli['maxCli'];
 
         $query= "INSERT INTO pruebas_coches (id_cliente, ppal, modelo, bastidor, anio) VALUES ('$max_cli', '1', '$coche0', '$bas0', '$anio0')";
-        //$result=  mysqli_query($link, $query2);
+        /*$result=  mysqli_query($link, $query2);*/
         mysqli_query($link, $query);
 
         //Actualizar id's de clientes y coches. Esto es pq los registros en estas tablas pueden borrarse y no se gestionan bien los id's

@@ -9,7 +9,7 @@ include 'inc/conexion.php';
 $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : NULL; 
         
 //$dirCli="select * from pruebas_direcciones WHERE id_cliente = $cliente";
-$dirCli="select * from pruebas_direcciones WHERE id_cliente = '701'";
+$dirCli="select * from pruebas_direcciones WHERE id_cliente = '$cliente'";
 
 //Ejecutamos
 $result = mysqli_query($link, $dirCli);

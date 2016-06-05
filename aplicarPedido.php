@@ -15,16 +15,14 @@ $fianza = isset($_REQUEST['fianza']) ? $_REQUEST['fianza'] : NULL;
 $pagado = isset($_REQUEST['pagado']) ? $_REQUEST['pagado'] : NULL; 
 $cambio = isset($_REQUEST['cambio']) ? $_REQUEST['cambio'] : NULL; 
 $beneficio = isset($_REQUEST['beneficio']) ? $_REQUEST['beneficio'] : NULL; 
-$anul = isset($_REQUEST['anul']) ? $_REQUEST['anul'] : NULL; 
+/*$anul = isset($_REQUEST['anul']) ? $_REQUEST['anul'] : NULL; */
 
+$query= "UPDATE pruebas_pedidos SET fra_env='$fra_env', inter='$inter', recog='$recog', fianza='$fianza', pagado='$pagado', cambio='$cambio', beneficio='$beneficio' WHERE id_pedido='$id_pedido' ";
 
-$query= $id_pedido;
-/*$query= "UPDATE pruebas_pedidos SET fra_env='$fra_env', inter='$inter', recog='$recog', fianza='$fianza', pagado='$pagado', cambio='$cambio', beneficio='$beneficio', anul='$anul' WHERE id_pedido='$id_pedido' ";*/
+$result = mysqli_query($link, $query);
+//echo $query;
 
-/*mysqli_query($link, $query);*/
-echo $query;
-
-//echo 1;
+//echo mysqli_num_rows($result) ;
 
 
 

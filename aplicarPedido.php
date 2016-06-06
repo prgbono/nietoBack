@@ -20,9 +20,13 @@ $beneficio = isset($_REQUEST['beneficio']) ? $_REQUEST['beneficio'] : NULL;
 $query= "UPDATE pruebas_pedidos SET fra_env='$fra_env', inter='$inter', recog='$recog', fianza='$fianza', pagado='$pagado', cambio='$cambio', beneficio='$beneficio' WHERE id_pedido='$id_pedido' ";
 
 $result = mysqli_query($link, $query);
-//echo $query;
+echo mysqli_num_rows($result);
 
-//echo mysqli_num_rows($result) ;
+
+
+
+
+
 
 
 

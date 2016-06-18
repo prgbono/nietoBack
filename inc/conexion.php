@@ -4,7 +4,8 @@
 
 $database = "nieto";
 $user = "root";
-$password = "root";
+/*$password = "root";*/
+$password = "pacorios1982";
 $server = "localhost";
 
 //Conexión

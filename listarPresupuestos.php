@@ -14,7 +14,7 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : 0;
 $id_ppto = isset($_REQUEST['id_ppto']) ? $_REQUEST['id_ppto'] : NULL;
 
 $sqlBase = "SELECT pruebas_presupuestos.id_ppto, pruebas_presupuestos.fecha, pruebas_coches.modelo as id_coche, 
-	pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
+	pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.id_cliente as clienteId, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
 	pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM (pruebas_presupuestos LEFT JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche ";
 
 

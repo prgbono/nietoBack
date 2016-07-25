@@ -11,7 +11,7 @@ $server = "localhost";*/
 
 $database = "db634677685";
 $user = "dbo634677685";
-$password = "1432357@Nieto";
+$password = "pacorios1982";
 $server = "db634677685.db.1and1.com";
 //$server = "localhost";
 

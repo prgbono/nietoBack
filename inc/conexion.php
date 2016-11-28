@@ -1,6 +1,6 @@
 <?php
 
-//Conexión con la BBDD
+
 
 
 

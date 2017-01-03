@@ -13,13 +13,12 @@ $cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : 0;
 
 $id_ppto = isset($_REQUEST['id_ppto']) ? $_REQUEST['id_ppto'] : NULL;
 
-$sqlBase = "SELECT pruebas_presupuestos.id_ppto, pruebas_presupuestos.fecha, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.id_cliente as clienteId, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
+$sqlBase = "SELECT pruebas_presupuestos.id_ppto, DATE(pruebas_presupuestos.fecha) as fecha, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.id_cliente as clienteId, pruebas_presupuestos.asunto, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
 	pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM (pruebas_presupuestos LEFT JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche ";
 
 
 if($cliente!=0){
-    /*$sql="SELECT * FROM pruebas_presupuestos WHERE id_cliente = '$cliente' ORDER BY fecha";*/
-    $sql=$sqlBase . "WHERE pruebas_presupuestos.id_cliente = '$cliente' ORDER BY fecha";
+    $sql=$sqlBase . "WHERE pruebas_presupuestos.id_cliente = '$cliente' ";
 }
 else{
 	if (is_null($keyword)){
@@ -27,7 +26,7 @@ else{
 		$sql = $sqlBase;
 	}
 	else{
-		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' or pruebas_presupuestos.total LIKE '$keyword') ORDER BY fecha";	
+		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' or pruebas_presupuestos.total LIKE '$keyword') ";	
 	}   
 }
 
@@ -35,10 +34,8 @@ if (!is_null($id_ppto)){
 	$sql = $sqlBase . "WHERE id_ppto = ".$id_ppto;
 } 
 
+$sql.= " ORDER BY id_ppto DESC ";
 $result = mysqli_query($link, $sql);
-
-/*echo $sql;
-exit();*/
 
 //JSON
 $output= array();

@@ -84,16 +84,16 @@ else {
             mysqli_query($link, $query);
         }
 
-        //Inserción en tabla de direcciones si se ha informado la dirección
-        if (!empty($envio_calle)) {
+        //Inserción en tabla de direcciones tanto si se ha informado la dirección como si no
+        //if (!empty($envio_calle)) {
             $query= "INSERT INTO pruebas_direcciones (id_cliente, calle, cp, ciudad, nif, E_F) VALUES ('$max_cli', '$envio_calle', '$envioCP', '$envio_ciudad', '', 'E')";
             mysqli_query($link, $query);    
-        }
+        //}
         
-        if (!empty($fact_calle)) {
+        //if (!empty($fact_calle)) {
             $query= "INSERT INTO pruebas_direcciones (id_cliente, calle, cp, ciudad, nif, E_F) VALUES ('$max_cli', '$fact_calle', '$factCP', '$fact_ciudad', '$factNIF', 'F')";
             mysqli_query($link, $query);    
-        }
+        //}
 
         echo 1;
     }

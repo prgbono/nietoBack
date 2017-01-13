@@ -38,7 +38,7 @@ mysqli_query($link, $query);
 
 /*2. La tabla de coches*/
 /*3. La tabla de direcciones*/
-//Obtener antes el id_direccion que hay que modificar (Es necesario con el id_cliente????
+//Obtener antes el id_direccion que hay que modificar (Es necesario con el id_cliente???? Sí
 $query= "UPDATE pruebas_direcciones SET calle='$envio_calle', cp='$envioCP', ciudad='$envio_ciudad' WHERE id_cliente='$id_cliente' AND E_F='E' ";
 mysqli_query($link, $query);  
 

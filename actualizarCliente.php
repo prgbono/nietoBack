@@ -14,9 +14,12 @@ $id_cliente = isset($_REQUEST['id_cliente']) ? $_REQUEST['id_cliente'] : NULL;
 
 //UTF-8 -- TRAERLO Y DECODIFICARLO EN UN ARRAY PQ NO SÉ LAS VARIABLES QUE VA A TRAER!!!
 $nombre = isset($_REQUEST['input_nombre']) ? $_REQUEST['input_nombre'] : 'NO validado'; 
+$modelo_coche = isset($_REQUEST['coche0']) ? $_REQUEST['coche0'] : '';
+$bastidor = isset($_REQUEST['bas0']) ? $_REQUEST['bas0'] : '';
+$anio_coche = isset($_REQUEST['anio0']) ? $_REQUEST['anio0'] : '';
 $variado = isset($_REQUEST['input_variado']) ? $_REQUEST['input_variado'] : 'NO validado';
 $tlf1 = isset($_REQUEST['input_tlf1']) ? $_REQUEST['input_tlf1'] : 'NO validado';
-$tlf2 = isset($_REQUEST['input_tlf2']) ? $_REQUEST['input_tlf2'] : 'NO validado';
+//$tlf2 = isset($_REQUEST['input_tlf2']) ? $_REQUEST['input_tlf2'] : 'NO validado';
 $email1 = isset($_REQUEST['input_email1']) ? $_REQUEST['input_email1'] : 'NO validado';
 $email2 = isset($_REQUEST['input_email2']) ? $_REQUEST['input_email2'] : 'NO validado';
 /*$envio_nombre = isset($_REQUEST['envio_nombre']) ? $_REQUEST['envio_nombre'] : 'NO validado';*/
@@ -37,6 +40,9 @@ $query= "UPDATE pruebas_clientes SET nombre='$nombre', variado='$variado', tlf1=
 mysqli_query($link, $query);
 
 /*2. La tabla de coches*/
+$query= "UPDATE pruebas_coches SET modelo='$modelo_coche', bastidor='$bastidor', anio='$anio_coche' WHERE id_cliente='$id_cliente' AND ppal=1";
+mysqli_query($link, $query);  
+
 /*3. La tabla de direcciones*/
 //Obtener antes el id_direccion que hay que modificar (Es necesario con el id_cliente???? Sí
 $query= "UPDATE pruebas_direcciones SET calle='$envio_calle', cp='$envioCP', ciudad='$envio_ciudad' WHERE id_cliente='$id_cliente' AND E_F='E' ";

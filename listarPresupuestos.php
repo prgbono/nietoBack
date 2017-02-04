@@ -26,7 +26,11 @@ else{
 		$sql = $sqlBase;
 	}
 	else{
-		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' or pruebas_presupuestos.total LIKE '$keyword') ";	
+		/*$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' or pruebas_presupuestos.total LIKE '$keyword') ";	*/
+		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or 
+			pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' 
+			or pruebas_presupuestos.total LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword' 
+			or pruebas_presupuestos.asunto LIKE '$keyword' or pruebas_presupuestos.asunto LIKE '$keyword')";
 	}   
 }
 
@@ -47,6 +51,7 @@ while($fila = mysqli_fetch_assoc($result)){
 
     //Falta el close connection mysqli_close(mysqli_connect($host, $user, $password, $database)) or die("Error en la DCX");
 
+//echo $sql;
 echo '{"Presupuestos":'.json_encode($output).'}';
 
 

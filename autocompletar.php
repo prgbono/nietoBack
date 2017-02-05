@@ -13,7 +13,7 @@ if(is_null($keyword)){
     $sql = "SELECT * FROM pruebas_clientes ORDER BY nombre";
 }
 else{
-    $sql = "SELECT * FROM pruebas_clientes WHERE nombre LIKE '$keyword' or coche LIKE '$keyword' or variado LIKE '$keyword' ORDER BY nombre";
+    $sql = "SELECT * FROM pruebas_clientes LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE nombre LIKE '$keyword' or coche LIKE '$keyword' or variado LIKE '$keyword' ORDER BY nombre";
 }
 
 //ejecutamos

@@ -15,18 +15,6 @@ class nietoManager {
         $password = "root";
         $host = "localhost";
         
-        //rios.esy.es
-        /*$database = "u994084025_nieto";
-        $user = "u994084025_qui38";
-        $password = "nietoDB1";
-        $host = "mysql.hostinger.es";*/
-        
-        //PRODUCCIÓN
-        /*$database = "";
-        $user = "";
-        $password = "";
-        $host = "mysql.hostinger.es";*/
-        
         //Conexión
         mysqli_connect($host, $user, $password, $database);
         //Acceso a una vble global en PHP $this->Vble_global. 

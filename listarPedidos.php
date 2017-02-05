@@ -1,7 +1,5 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-
-//BBDD connect
 include 'inc/conexion.php';
 
 //cadena a buscar caso que venga del buscador
@@ -19,8 +17,6 @@ $sql_tri3="SELECT pruebas_pedidos.id_pedido, DATE(pruebas_pedidos.fecha) as fech
  $sql_tri4="SELECT pruebas_pedidos.id_pedido, DATE(pruebas_pedidos.fecha) as fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_clientes.id_cliente as clienteId, pruebas_pedidos.total, pruebas_pedidos.fra_env, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) BETWEEN '".date("Y")."-10-01 00:00:00' AND '".date("Y")."-12-31 23:59:59' ";
 
  $sql_PedTotal="SELECT pruebas_pedidos.id_pedido, DATE(pruebas_pedidos.fecha) as fecha, pruebas_pedidos.id_fra, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_clientes.id_cliente as clienteId, pruebas_pedidos.total, pruebas_pedidos.fra_env, pruebas_pedidos.inter, pruebas_pedidos.recog, pruebas_pedidos.fianza, pruebas_pedidos.pagado, pruebas_pedidos.cambio, pruebas_pedidos.beneficio, pruebas_pedidos.anul, pruebas_pedidos.iva, pruebas_pedidos.subtotal FROM (pruebas_pedidos LEFT JOIN pruebas_clientes ON pruebas_pedidos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE date(pruebas_pedidos.fecha) not BETWEEN '".date("Y")."-01-01 00:00:00' AND '".date("Y")."-12-31 23:59:59' ";
-
-//AND (pruebas_clientes.id_cliente = '$cliente') ORDER BY pruebas_pedidos.fecha";
 
 if($cliente!=0){    
 
@@ -86,8 +82,6 @@ $outputPedTotal= array();
 while($fila = mysqli_fetch_assoc($resultPedTotal)){
     $outputPedTotal[]=array_map('utf8_encode', $fila);
 }
-
-    //Falta el close connection mysqli_close(mysqli_connect($host, $user, $password, $database)) or die("Error en la DCX");
 
 echo '{"Pedidos":'.json_encode(array($output1, $output2, $output3, $output4, $outputPedTotal)).'}';
 

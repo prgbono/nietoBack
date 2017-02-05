@@ -1,7 +1,5 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-
-//BBDD connect
 include 'inc/conexion.php';
 
 //cadena a buscar caso que venga del buscador
@@ -25,8 +23,6 @@ while($fila = mysqli_fetch_assoc($result)){
     $output[]=array_map('utf8_encode', $fila);
 
 }
-
-    //Falta el close connection mysqli_close(mysqli_connect($host, $user, $password, $database)) or die("Error en la DCX");
 
 echo '{"Piezas":'.json_encode($output).'}';
 

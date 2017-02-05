@@ -1,7 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
-
 $sql = "SELECT id_pruebas_bbdd, title FROM pruebas_bbdd ORDER BY title";
 $result = mysqli_query($link, $sql);
 

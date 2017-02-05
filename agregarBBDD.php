@@ -1,6 +1,5 @@
 <?php
 
-//Esta instrucción es para que funcione entre servidores, incluido si lo piruebas en el Chrome
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 

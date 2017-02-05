@@ -1,13 +1,8 @@
 <?php
 
-//Esta instrucción es para que funcione entre servidores, incluido si lo piruebas en el Chrome
 header('Access-Control-Allow-Origin: *');
-
-//1.Incluir el fichero de conexión para conectar con la BBDD
 include 'inc/conexion.php';
-
-//2. Obtener los datos que nos envía jquery 
-extract($_REQUEST); //A partir de esta línea tenemos disponibles unas variables que se llaman igual que el atributo name de los inputs del formulario. 
+extract($_REQUEST); 
 
 //UTF-8 -- TRAERLO Y DECODIFICARLO EN UN ARRAY PQ NO SÉ LAS VARIABLES QUE VA A TRAER!!!
 $nombre = utf8_decode(trim($input_nombre));
@@ -26,11 +21,9 @@ $bas2 = utf8_decode(trim($bas2));
 $anio0 = utf8_decode(trim($anio0));
 $anio1 = utf8_decode(trim($anio1));
 $anio2 = utf8_decode(trim($anio2));
-/*$envio_nombre = utf8_decode(trim($envio_nombre));*/
 $envio_calle = utf8_decode(trim($envio_calle));
 $envioCP = utf8_decode(trim($envioCP));
 $envio_ciudad = utf8_decode(trim($envio_ciudad));
-/*$fact_nombre = utf8_decode(trim($fact_nombre));*/
 $fact_calle = utf8_decode(trim($fact_calle));
 $factCP = utf8_decode(trim($factCP));
 $factNIF = utf8_decode(trim($factNIF));

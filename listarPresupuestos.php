@@ -1,7 +1,5 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-
-//BBDD connect
 include 'inc/conexion.php';
 
 //cadena a buscar caso que venga del buscador
@@ -22,11 +20,9 @@ if($cliente!=0){
 }
 else{
 	if (is_null($keyword)){
-		/*$sql = "SELECT * FROM pruebas_presupuestos";	*/
 		$sql = $sqlBase;
 	}
 	else{
-		/*$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' or pruebas_presupuestos.total LIKE '$keyword') ";	*/
 		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or 
 			pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' 
 			or pruebas_presupuestos.total LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword' 
@@ -41,17 +37,12 @@ if (!is_null($id_ppto)){
 $sql.= " ORDER BY id_ppto DESC ";
 $result = mysqli_query($link, $sql);
 
-//JSON
 $output= array();
 while($fila = mysqli_fetch_assoc($result)){
     //$output[]= $fila; Con esta instrucción bastaría pero los registros con tildes los pone a null
     $output[]=array_map('utf8_encode', $fila);
 
 }
-
-    //Falta el close connection mysqli_close(mysqli_connect($host, $user, $password, $database)) or die("Error en la DCX");
-
-//echo $sql;
 echo '{"Presupuestos":'.json_encode($output).'}';
 
 

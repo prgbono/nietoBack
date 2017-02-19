@@ -30,11 +30,11 @@ if($cliente!=0){
 else{
     if(is_null($keyword)){
     //sql's de los 4 trimestres del año en curso y del resto de pedidos de otros años
-        $sql_tri1 = $sql_tri1."ORDER BY pruebas_pedidos.fecha";
-        $sql_tri2 = $sql_tri2."ORDER BY pruebas_pedidos.fecha";
-        $sql_tri3 = $sql_tri3."ORDER BY pruebas_pedidos.fecha";
-        $sql_tri4 = $sql_tri4."ORDER BY pruebas_pedidos.fecha";
-        $sql_PedTotal = $sql_PedTotal."ORDER BY pruebas_pedidos.fecha";
+        $sql_tri1 = $sql_tri1."ORDER BY pruebas_pedidos.fecha desc";
+        $sql_tri2 = $sql_tri2."ORDER BY pruebas_pedidos.fecha desc";
+        $sql_tri3 = $sql_tri3."ORDER BY pruebas_pedidos.fecha desc";
+        $sql_tri4 = $sql_tri4."ORDER BY pruebas_pedidos.fecha desc";
+        $sql_PedTotal = $sql_PedTotal."ORDER BY pruebas_pedidos.fecha desc";
     }
     else
     {

@@ -15,7 +15,6 @@ $anio_coche = isset($_REQUEST['input_anio_coche']) ? $_REQUEST['input_anio_coche
 $variado = isset($_REQUEST['input_variado']) ? $_REQUEST['input_variado'] : 'NO validado';
 $tlf1 = isset($_REQUEST['input_tlf1']) ? $_REQUEST['input_tlf1'] : 'NO validado';
 $email1 = isset($_REQUEST['input_email1']) ? $_REQUEST['input_email1'] : 'NO validado';
-$email2 = isset($_REQUEST['input_email2']) ? $_REQUEST['input_email2'] : 'NO validado';
 $envio_calle = isset($_REQUEST['envio_calle']) ? $_REQUEST['envio_calle'] : 'NO validado';
 $envioCP = isset($_REQUEST['envioCP']) ? $_REQUEST['envioCP'] : 'NO validado';
 $envio_ciudad = isset($_REQUEST['envio_ciudad']) ? $_REQUEST['envio_ciudad'] : 'NO validado';
@@ -28,7 +27,7 @@ $fact_ciudad = isset($_REQUEST['fact_ciudad']) ? $_REQUEST['fact_ciudad'] : 'NO 
 	1. La tabla de clientes
 	2. La tabla de coches
 	3. Tabla de direcciones */
-$query= "UPDATE pruebas_clientes SET nombre='$nombre', variado='$variado', tlf1='$tlf1', tlf2='$tlf2', email='$email1', email2='$email2' WHERE id_cliente='$id_cliente' ";
+$query= "UPDATE pruebas_clientes SET nombre='$nombre', variado='$variado', tlf1='$tlf1', email='$email1' WHERE id_cliente='$id_cliente' ";
 mysqli_query($link, $query);
 
 /*2. La tabla de coches*/

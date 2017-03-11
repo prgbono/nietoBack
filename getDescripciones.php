@@ -9,7 +9,7 @@ if(is_null($keyword)){
     $sql = "SELECT sp_title FROM pruebas_bbdd ORDER BY sp_title";
 }
 else{
-    $sql = "SELECT sp_title FROM pruebas_bbdd WHERE sp_title LIKE '$keyword' ORDER BY sp_title";
+    $sql = "SELECT sp_title FROM pruebas_bbdd WHERE sp_title LIKE '$keyword' OR part_number LIKE '$keyword' OR title LIKE '$keyword'  ORDER BY sp_title";
 }
 
 $result = mysqli_query($link, $sql);

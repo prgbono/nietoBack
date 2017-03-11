@@ -26,7 +26,7 @@ else{
 		$sql = $sqlBase . "WHERE (pruebas_presupuestos.id_ppto LIKE '$keyword' or pruebas_presupuestos.fecha LIKE '$keyword' or 
 			pruebas_presupuestos.id_coche LIKE '$keyword' or pruebas_presupuestos.id_cliente LIKE '$keyword' 
 			or pruebas_presupuestos.total LIKE '$keyword' or pruebas_clientes.nombre LIKE '$keyword' 
-			or pruebas_presupuestos.asunto LIKE '$keyword' or pruebas_presupuestos.asunto LIKE '$keyword')";
+			or pruebas_presupuestos.asunto LIKE '$keyword')";
 	}   
 }
 

@@ -14,6 +14,7 @@ $tlf1 = trim($input_tlf1);
 $tlf2 = trim($input_tlf2);
 $email1 = utf8_decode(trim($input_email1));
 $email2 = utf8_decode(trim($input_email2));
+$ciudad = utf8_decode(trim($input_ciudad));
 $ppal = utf8_decode(trim($ppal));
 $bas0 = utf8_decode(trim($bas0));
 $bas1 = utf8_decode(trim($bas1));
@@ -46,7 +47,7 @@ else {
     }
     else{
         //Inserción en tablas clientes, coches y direcciones
-        $query= "INSERT INTO pruebas_clientes (nombre, coche, variado, tlf1, tlf2, email, email2) VALUES ('$nombre', '0', '$variado', '$tlf1', '$tlf2', '$email1','$email2')";
+        $query= "INSERT INTO pruebas_clientes (nombre, coche, variado, tlf1, tlf2, email, email2, ciudad) VALUES ('$nombre', '0', '$variado', '$tlf1', '$tlf2', '$email1','$email2', '$ciudad')";
         /*$result = mysqli_query($link, $query);*/
         mysqli_query($link, $query);
 

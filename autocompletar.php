@@ -12,7 +12,8 @@ if(is_null($keyword)){
     $sql = "SELECT * FROM pruebas_clientes ORDER BY nombre";
 }
 else{
-    $sql = "SELECT * FROM pruebas_clientes LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE nombre LIKE '$keyword' or coche LIKE '$keyword' or variado LIKE '$keyword' or email LIKE '$keyword' ORDER BY nombre";
+    $sql = "SELECT * FROM pruebas_clientes LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE nombre LIKE '$keyword' or modelo LIKE '$keyword' or variado LIKE '$keyword' or email LIKE '$keyword' or ciudad LIKE '$keyword' ORDER BY nombre";
+    /*$sql = "SELECT * FROM pruebas_direcciones, pruebas_clientes LEFT JOIN pruebas_coches ON pruebas_clientes.id_cliente = pruebas_coches.id_cliente WHERE nombre LIKE '$keyword' or modelo LIKE '$keyword' or variado LIKE '$keyword' or email LIKE '$keyword' or pruebas_direcciones.ciudad LIKE '$keyword' ORDER BY nombre";*/
 }
 $result = mysqli_query($link, $sql);
 $output= array();

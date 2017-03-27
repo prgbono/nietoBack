@@ -9,11 +9,13 @@ $title = utf8_decode(trim($title));
 $titulo = utf8_decode(trim($titulo));
 $gbp = utf8_decode(trim($gbp));
 
-//1. Comprobar que no exista ya el partNumber enviado
+//Distinguir entre inserción y actualización mediante el campo part_number recibido
 $query = "SELECT * FROM pruebas_bbdd WHERE part_number='$partNumber'";
 $result = mysqli_query($link, $query);
 if (mysqli_num_rows($result)>0){
     //Ya existe
+    $query= "UPDATE pruebas_bbdd SET part_number='$partNumber', title= '$title', sp_title= '$titulo', gbp='$gbp' WHERE part_number= '$partNumber'";
+    $result=  mysqli_query($link, $query);
     echo -1;
 }else{
     //no existe. Insertar

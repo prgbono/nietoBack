@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 
 //cadena a buscar en los nombres de clientes caso que se informe
-$keyword = isset($_REQUEST['keyword']) ? '%'.$_REQUEST['keyword'].'%' : NULL;
+$keyword = isset($_POST['keyword']) ? '%'.$_POST['keyword'].'%' : NULL;
 
 //Esta parte sobra, no entra en este caso nunca
 if(is_null($keyword)){

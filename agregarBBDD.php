@@ -3,7 +3,7 @@
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 
-extract($_REQUEST); 
+extract($_POST); 
 $partNumber = utf8_decode(trim($partNumber));
 $title = utf8_decode(trim($title));
 $titulo = utf8_decode(trim($titulo));

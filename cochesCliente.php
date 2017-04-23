@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 //Obtener la id del user que nos envía jquery
-$cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : NULL; 
+$cliente = isset($_POST['cliente']) ? $_POST['cliente'] : NULL; 
         
 $cochesCli="select * from pruebas_coches WHERE id_cliente = $cliente";
 //$cochesCli="select * from pruebas_coches WHERE id_cliente = '707'";

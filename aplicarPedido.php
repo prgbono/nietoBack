@@ -1,16 +1,16 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
-extract($_REQUEST);
+extract($_POST);
 
-$id_pedido = isset($_REQUEST['id_pedido']) ? $_REQUEST['id_pedido'] : NULL; 
-$fra_env = isset($_REQUEST['fra_env']) ? $_REQUEST['fra_env'] : NULL; 
-$inter = isset($_REQUEST['inter']) ? $_REQUEST['inter'] : NULL; 
-$recog = isset($_REQUEST['recog']) ? $_REQUEST['recog'] : NULL; 
-$fianza = isset($_REQUEST['fianza']) ? $_REQUEST['fianza'] : NULL; 
-$pagado = isset($_REQUEST['pagado']) ? $_REQUEST['pagado'] : NULL; 
-$cambio = isset($_REQUEST['cambio']) ? $_REQUEST['cambio'] : NULL; 
-$beneficio = isset($_REQUEST['beneficio']) ? $_REQUEST['beneficio'] : NULL; 
+$id_pedido = isset($_POST['id_pedido']) ? $_POST['id_pedido'] : NULL; 
+$fra_env = isset($_POST['fra_env']) ? $_POST['fra_env'] : NULL; 
+$inter = isset($_POST['inter']) ? $_POST['inter'] : NULL; 
+$recog = isset($_POST['recog']) ? $_POST['recog'] : NULL; 
+$fianza = isset($_POST['fianza']) ? $_POST['fianza'] : NULL; 
+$pagado = isset($_POST['pagado']) ? $_POST['pagado'] : NULL; 
+$cambio = isset($_POST['cambio']) ? $_POST['cambio'] : NULL; 
+$beneficio = isset($_POST['beneficio']) ? $_POST['beneficio'] : NULL; 
 
 $query= "UPDATE pruebas_pedidos SET fra_env='$fra_env', inter='$inter', recog='$recog', fianza='$fianza', pagado='$pagado', cambio='$cambio', beneficio='$beneficio' WHERE id_pedido='$id_pedido' ";
 

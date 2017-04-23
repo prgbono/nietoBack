@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 //cadena a buscar en las descripciones
-$sp_title = isset($_REQUEST['sp_title']) ? $_REQUEST['sp_title'] : NULL;
+$sp_title = isset($_POST['sp_title']) ? $_POST['sp_title'] : NULL;
 
 $sql = "SELECT part_number, gbp FROM pruebas_bbdd WHERE sp_title = '$sp_title'";
 $result = mysqli_query($link, $sql);

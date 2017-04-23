@@ -3,7 +3,7 @@ header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 
 //cadena a buscar caso que venga del buscador
-$keyword = isset($_REQUEST['keyword']) ? '%'.$_REQUEST['keyword'].'%' : NULL;
+$keyword = isset($_POST['keyword']) ? '%'.$_POST['keyword'].'%' : NULL;
 
 //Esta parte sobra, no entra en este caso nunca
 if(is_null($keyword)){

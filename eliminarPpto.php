@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
-extract($_REQUEST);
+extract($_POST);
 
 //Eliminar ppto y todos sus artículos
 $query = "DELETE FROM pruebas_detalle_presupuestos WHERE id_ppto = $id_ppto";

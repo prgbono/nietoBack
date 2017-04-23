@@ -1,8 +1,8 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
-$id_bbdd = isset($_POST['id_bbdd']) ? $_POST['id_bbdd'] : NULL;
-$sql = "SELECT * FROM pruebas_bbdd WHERE id_bbdd= '$id_bbdd'";
+$id_bbdd = isset($_POST['part_number']) ? $_POST['part_number'] : NULL;
+$sql = "SELECT * FROM pruebas_bbdd WHERE part_number= '$part_number'";
 $result = mysqli_query($link, $sql);
 
 $output= array();

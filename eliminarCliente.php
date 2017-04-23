@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 //Obtener la id del cliente que nos envía jquery
-extract($_REQUEST);
+extract($_POST);
 
 $query = "DELETE FROM pruebas_clientes WHERE id_cliente=$id_cliente";
 /* OJOOOOO

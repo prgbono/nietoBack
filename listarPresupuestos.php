@@ -3,13 +3,13 @@ header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 
 //cadena a buscar caso que venga del buscador
-$keyword = isset($_REQUEST['keyword']) ? '%'.$_REQUEST['keyword'].'%' : NULL;
+$keyword = isset($_POST['keyword']) ? '%'.$_POST['keyword'].'%' : NULL;
 
 //cliente a filtrar caso que venga del botón listar presupuestos de un cliente determinado en la pantalla Listado de clientes.
 //Si no viene cliente que sea 0 y por ese 0 filtramos la consulta
-$cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : 0;
+$cliente = isset($_POST['cliente']) ? $_POST['cliente'] : 0;
 
-$id_ppto = isset($_REQUEST['id_ppto']) ? $_REQUEST['id_ppto'] : NULL;
+$id_ppto = isset($_POST['id_ppto']) ? $_POST['id_ppto'] : NULL;
 
 $sqlBase = "SELECT pruebas_presupuestos.id_ppto, DATE_FORMAT(pruebas_presupuestos.fecha, '%d-%m-%Y') as fecha, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.id_cliente as clienteId, pruebas_presupuestos.asunto, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
 	pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM (pruebas_presupuestos LEFT JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche ";

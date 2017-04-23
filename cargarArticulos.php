@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 
-$id_ppto = isset($_REQUEST['id_ppto']) ? $_REQUEST['id_ppto'] : NULL;
+$id_ppto = isset($_POST['id_ppto']) ? $_POST['id_ppto'] : NULL;
 
 $sql = "SELECT * FROM pruebas_detalle_presupuestos ";
 

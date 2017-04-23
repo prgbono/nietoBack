@@ -2,7 +2,7 @@
 
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
-extract($_REQUEST); 
+extract($_POST); 
 
 //UTF-8 -- TRAERLO Y DECODIFICARLO EN UN ARRAY PQ NO SÉ LAS VARIABLES QUE VA A TRAER!!!
 $nombre = utf8_decode(trim($input_nombre));

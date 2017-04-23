@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
-$cliente = isset($_REQUEST['cliente']) ? $_REQUEST['cliente'] : NULL; 
+$cliente = isset($_POST['cliente']) ? $_POST['cliente'] : NULL; 
 $dirCli="select * from pruebas_direcciones WHERE id_cliente = '$cliente'";
 
 $result = mysqli_query($link, $dirCli);

@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 include 'inc/conexion.php';
 //Obtener la id 
-extract($_REQUEST);
+extract($_POST);
 
-$query = "DELETE FROM pruebas_bbdd WHERE id_bbdd=$id_bbdd";
+$query = "DELETE FROM pruebas_bbdd WHERE part_number=$part_number";
 echo mysqli_query($link, $query);

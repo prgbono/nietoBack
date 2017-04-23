@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 include ('../nietoBack/inc/conexion.php');
 
-$id_vehiculo = isset($_REQUEST['id_vehiculo']) ? $_REQUEST['id_vehiculo'] : 0;  
+$id_vehiculo = isset($_POST['id_vehiculo']) ? $_POST['id_vehiculo'] : 0;  
 $bastidor="SELECT bastidor FROM pruebas_coches WHERE id_coche = '$id_vehiculo'";
 $result = mysqli_query($link, $bastidor);
 

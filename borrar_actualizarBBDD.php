@@ -25,6 +25,8 @@ if(isset($_POST["CSVdoc"]))
 		$sp_title = $filesop[2];
 		$gbp = $filesop[3];
 
+		echo 'esto es una linea';
+
 		//$sql = mysql_query("INSERT INTO csv (name, email) VALUES ('$name','$email')");
 		$sql= "DELETE FROM bbdd";
 		mysqli_query($link, $sql);
@@ -32,14 +34,14 @@ if(isset($_POST["CSVdoc"]))
 		mysqli_query($link, $sql);
 	}
 
-	if($sql){
+	/*if($sql){
 		echo "OK";
 	}else{
 		echo "KO";
-	}
+	}*/
 }
-else{
+/*else{
 	echo "KO";
-}
+}*/
 
 ?>

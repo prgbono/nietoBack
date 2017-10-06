@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text/html;charset=utf-8");
 //require_once ('../dompdf/dompdf_config.inc.php');
 header('Access-Control-Allow-Origin: *');
 //PARA PRODUCCIÓN

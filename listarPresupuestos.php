@@ -13,7 +13,7 @@ $cliente = isset($_POST['cliente']) ? $_POST['cliente'] : 0;
 $id_ppto = isset($_POST['id_ppto']) ? $_POST['id_ppto'] : NULL;
 
 $sqlBase = "SELECT pruebas_presupuestos.id_ppto, DATE_FORMAT(pruebas_presupuestos.fecha, '%d-%m-%Y') as fecha, pruebas_coches.modelo as id_coche, pruebas_clientes.nombre as id_cliente, pruebas_presupuestos.id_cliente as clienteId, pruebas_presupuestos.asunto, pruebas_presupuestos.total, pruebas_presupuestos.transporte, 
-	pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva FROM (pruebas_presupuestos LEFT JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche ";
+	pruebas_presupuestos.canarias, pruebas_presupuestos.subtotal, pruebas_presupuestos.iva, pruebas_presupuestos.inter FROM (pruebas_presupuestos LEFT JOIN pruebas_clientes ON pruebas_presupuestos.id_cliente = pruebas_clientes.id_cliente) LEFT JOIN pruebas_coches ON pruebas_presupuestos.id_coche = pruebas_coches.id_coche ";
 
 
 if($cliente!=0){

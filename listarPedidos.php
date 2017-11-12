@@ -85,7 +85,7 @@ while($fila = mysqli_fetch_assoc($resultPedTotal)){
     $outputPedTotal[]=array_map('utf8_encode', $fila);
 }
 
-echo '{"Pedidos":'.json_encode(array($output1, $output2, $output3, $output4, $outputPedTotal, $sql_tri4)).'}';
+echo '{"Pedidos":'.json_encode(array($output1, $output2, $output3, $output4, $outputPedTotal)).'}';
 
 
 

@@ -11,11 +11,13 @@ $fecha = utf8_decode(trim($fecha));
 
 
 //Distinguir entre inserción y actualización mediante el campo $pedido recibido
-$query = "SELECT * FROM pruebas_perdidas WHERE id_pedido='$pedido'";
+$sql="SELECT pruebas_perdidas.id_perdida, pruebas_perdidas.id_pedido, pruebas_perdidas.concepto, pruebas_perdidas.coste, DATE_FORMAT(pruebas_perdidas.fecha, '%d-%m-%Y') as fecha FROM pruebas_perdidas WHERE id_pedido='$pedido";
+
 $result = mysqli_query($link, $query);
 if (mysqli_num_rows($result)>0){
     //Ya existe
-    $query= "UPDATE pruebas_perdidas SET id_pedido='$pedido', concepto= '$concepto', coste= '$coste', fecha='$fecha' WHERE id_pedido='$pedido'";
+    $query= "UPDATE pruebas_perdidas SET id_pedido='$pedido', concepto= '$concepto', coste= '$coste', 
+    fecha=STR_TO_DATE('$fecha', '%d/%m/%Y') WHERE id_pedido='$pedido'";
     $result=  mysqli_query($link, $query);
     echo -1;
 }else{
@@ -25,8 +27,3 @@ if (mysqli_num_rows($result)>0){
 	$result = mysqli_query($link, $query);
     echo 1;
 }
-
-
-
-
-
